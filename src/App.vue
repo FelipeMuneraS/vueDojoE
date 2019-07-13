@@ -9,20 +9,27 @@
 
 <script>
 import TranslateIn from "./components/TranslateIn.vue";
-import TranslateOut from "./components/TranslateOut.vue"
+import TranslateOut from "./components/TranslateOut.vue";
 export default {
   name: "app",
   components: {
     TranslateIn,
     TranslateOut
   },
+  data: function() {
+    return {
+      translateThisText: ""
+    };
+  },
+
   methods: {
     translate: function(text, languaje) {
       this.$http
         .get(
-          `https://translate.yandex.net/api/v1.5/tr.json/translate?key=trnsl.1.1.20190622T213455Z.f67e95598c7aee64.c0c49d0594aa527178d83c8e3c1a81ed05709a56&lang=${languaje}&text=${text}`)
-          .then(Response => {
-          this.translate = Response.body.text[0];
+          `https://translate.yandex.net/api/v1.5/tr.json/translate?key=trnsl.1.1.20190622T213455Z.f67e95598c7aee64.c0c49d0594aa527178d83c8e3c1a81ed05709a56&lang=${languaje}&text=${text}`
+        )
+        .then(Response => {
+          this.translateThisText = Response.body.text[0];
         });
     }
   }
