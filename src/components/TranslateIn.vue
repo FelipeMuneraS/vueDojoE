@@ -2,8 +2,12 @@
   <div id="TranslateIn">
     Translation
     <form v-on:submit="formSubmit">
-      <input type="text" v-model="textToTranslate" placeholder="Write the text to translate"/>
-      <input type="submit" value="Translate">
+      <input type="text" v-model="textToTranslate" placeholder="Write the text to translate" />
+      <input type="submit" value="Translate" />
+      <select v-model="languaje">
+        <option value="en">English</option>
+        <option value="it">Italian</option>
+      </select>
     </form>
   </div>
 </template>
